@@ -1,0 +1,8 @@
+rootProject.name = 'spring-security-presentation'
+include 'security-xml'
+include 'security-java-config'
+include 'security-console'
+include 'security-testing'
+include 'filter-example'
+include 'servlet-security'
+
