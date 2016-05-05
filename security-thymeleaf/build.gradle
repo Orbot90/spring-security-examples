@@ -1,0 +1,16 @@
+group 'ru.orbot90'
+version '1.0-SNAPSHOT'
+
+war.archiveName = "thymeleaf.war"
+
+dependencies {
+    compile "org.springframework:spring-core:${springVersion}",
+            "org.springframework:spring-beans:${springVersion}",
+            "org.springframework:spring-webmvc:${springVersion}",
+            "org.thymeleaf:thymeleaf-spring4:2.1.4.RELEASE",
+
+            'org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2.1.2.RELEASE',
+            "org.springframework.security:spring-security-config:${securityVersion}",
+            "org.springframework.security:spring-security-core:${securityVersion}",
+            "org.springframework.security:spring-security-web:${securityVersion}"
+}

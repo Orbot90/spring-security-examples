@@ -5,4 +5,5 @@ include 'security-console'
 include 'security-testing'
 include 'filter-example'
 include 'servlet-security'
+include 'security-thymeleaf'
 
