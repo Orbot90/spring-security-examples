@@ -3,6 +3,7 @@ package ru.orbot90.security.console.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
@@ -22,6 +23,7 @@ import java.util.Arrays;
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
 @ComponentScan(basePackages = "ru.orbot90")
+@EnableAspectJAutoProxy
 public class ApplicationConfig {
 
     @Bean

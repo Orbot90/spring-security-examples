@@ -4,6 +4,8 @@ version '1.0-SNAPSHOT'
 dependencies {
     compile "org.springframework:spring-core:${springVersion}",
             "org.springframework:spring-beans:${springVersion}",
+            'org.aspectj:aspectjweaver:1.8.9',
+            'aspectj:aspectjrt:1.5.4',
 
             "org.springframework.security:spring-security-config:${securityVersion}",
             "org.springframework.security:spring-security-core:${securityVersion}"

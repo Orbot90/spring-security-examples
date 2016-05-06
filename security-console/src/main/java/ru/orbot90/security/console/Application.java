@@ -3,7 +3,6 @@ package ru.orbot90.security.console;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Component;
 import ru.orbot90.security.console.config.ApplicationConfig;
 import ru.orbot90.security.console.service.LoginService;
@@ -46,11 +45,7 @@ public class Application {
 
     private void callMethods() {
         System.out.println("=========Calling mock service methods============");
-        try {
-            mockService.securedMethod();
-        } catch (AccessDeniedException e) {
-            System.out.println("Access to secured method denied!");
-        }
+        mockService.securedMethod();
         mockService.unSecuredMethod();
         System.out.println("=========Done calling mock service===========");
     }
