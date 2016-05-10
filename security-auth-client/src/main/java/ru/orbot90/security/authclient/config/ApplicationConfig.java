@@ -17,7 +17,7 @@ public class ApplicationConfig {
     @Bean
     public HessianProxyFactoryBean accountService() {
         HessianProxyFactoryBean proxyFactoryBean = new HessianProxyFactoryBean();
-        proxyFactoryBean.setServiceUrl("http://localhost:8081/authserver/AuthService");
+        proxyFactoryBean.setServiceUrl("http://localhost:8080/authserver/AuthService");
         proxyFactoryBean.setServiceInterface(AuthenticationService.class);
         return proxyFactoryBean;
     }
