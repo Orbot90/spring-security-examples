@@ -30,7 +30,7 @@ public class SecurityAuthServerAuthenticationProvider implements AuthenticationP
         request.setUsername(username);
         request.setPassword(password);
         AuthenticationResponse response = authenticationService.authenticate(request);
-        if(!response.getSuccess()) {
+        if(response.getSuccess()) {
             return new UsernamePasswordAuthenticationToken(username, password,
                     Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
         }

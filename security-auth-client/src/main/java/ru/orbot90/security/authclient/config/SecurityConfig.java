@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import ru.orbot90.security.authclient.provider.SecurityAuthServerAuthenticationProvider;
 
 /**
  * Created by plevako on 10.05.2016.
@@ -15,12 +16,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private SecurityAuthServerAuthenticationProvider securityAuthServerAuthenticationProvider;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("cooluser").password("pass").roles("USER");
+        auth.authenticationProvider(securityAuthServerAuthenticationProvider);
     }
 
     @Override

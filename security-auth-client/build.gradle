@@ -11,5 +11,8 @@ dependencies {
 
             "org.springframework.security:spring-security-config:${securityVersion}",
             "org.springframework.security:spring-security-core:${securityVersion}",
-            "org.springframework.security:spring-security-web:${securityVersion}"
+            "org.springframework.security:spring-security-web:${securityVersion}",
+
+            'com.caucho:hessian:4.0.38'
+
 }
