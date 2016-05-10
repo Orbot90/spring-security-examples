@@ -6,4 +6,7 @@ include 'security-testing'
 include 'filter-example'
 include 'servlet-security'
 include 'security-thymeleaf'
+include 'security-auth-server'
+include 'security-auth-api'
+include 'security-auth-client'
 
