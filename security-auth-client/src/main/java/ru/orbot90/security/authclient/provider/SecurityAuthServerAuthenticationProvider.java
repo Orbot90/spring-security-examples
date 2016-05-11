@@ -2,6 +2,7 @@ package ru.orbot90.security.authclient.provider;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -24,6 +25,9 @@ public class SecurityAuthServerAuthenticationProvider implements AuthenticationP
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        if(!supports(authentication.getClass())) {
+            return null;
+        }
         String username = authentication.getPrincipal().toString();
         String password = authentication.getCredentials().toString();
         AuthenticationRequest request = new AuthenticationRequest();
@@ -33,8 +37,9 @@ public class SecurityAuthServerAuthenticationProvider implements AuthenticationP
         if(response.getSuccess()) {
             return new UsernamePasswordAuthenticationToken(username, password,
                     Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+        } else {
+            throw new BadCredentialsException("Bad credentials");
         }
-        return null;
     }
 
     @Override

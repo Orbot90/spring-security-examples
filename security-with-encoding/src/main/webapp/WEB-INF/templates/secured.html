@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+</head>
+<body>
+<h1>Secured Content</h1>
+<h2>Registered users:</h2>
+<div>
+    <ol>
+        <li th:each="user : ${users}">=====================<br/>Username: <span th:text="${user.username}"/>
+        <br/>Password: <span th:text="${user.password}"/><br />=====================<br/></li>
+    </ol>
+</div>
+</body>
+</html>
