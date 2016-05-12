@@ -1,0 +1,32 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-4.1.xsd">
+
+    <beans:bean class="org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices"
+        id="rememberMeServices">
+        <beans:constructor-arg value="remember-me" />
+        <beans:constructor-arg ref="userDetailsServiceImpl" />
+    </beans:bean>
+
+    <beans:bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"
+                id="passwordEncoder" />
+
+    <http>
+        <csrf disabled="true" />
+        <intercept-url pattern="/secured/**" access="hasRole('USER')" />
+        <form-login login-page="/loginpage" login-processing-url="/loginpage"/>
+        <logout logout-success-url="/logoutsuccess" />
+        <remember-me key="remember-me" services-ref="rememberMeServices" />
+    </http>
+
+    <authentication-manager erase-credentials="true">
+        <authentication-provider user-service-ref="userDetailsServiceImpl">
+            <password-encoder ref="passwordEncoder" />
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>

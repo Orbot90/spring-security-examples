@@ -1,7 +1,6 @@
 package ru.orbot90.security.encoding.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -23,8 +22,6 @@ public class UserDetailsServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
-    @Autowired
-    private AuthenticationManager authenticationManager;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
