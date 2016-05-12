@@ -13,7 +13,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public AuthenticationResponse authenticate(AuthenticationRequest req) {
         boolean success = req.getUsername().equals("cooluser")
-                && req.getPassword().equals("password");
+                && req.getPassword().equals("pass");
         AuthenticationResponse response = new AuthenticationResponse();
         response.setSuccess(success);
         return response;

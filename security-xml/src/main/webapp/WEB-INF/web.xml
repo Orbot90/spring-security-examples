@@ -9,9 +9,20 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>secured</servlet-name>
+        <jsp-file>/secured.jsp</jsp-file>
+    </servlet>
+
+
     <servlet-mapping>
         <servlet-name>securityxml</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>secured</servlet-name>
+        <url-pattern>/secured</url-pattern>
     </servlet-mapping>
 
     <listener>

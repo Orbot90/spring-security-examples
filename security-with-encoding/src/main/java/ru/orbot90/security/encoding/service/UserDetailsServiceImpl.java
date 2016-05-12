@@ -2,11 +2,8 @@ package ru.orbot90.security.encoding.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -51,6 +48,8 @@ public class UserDetailsServiceImpl implements UserService {
     }
 
     private User createUser(ru.orbot90.security.encoding.model.User user) {
+        if(user == null)
+            throw new UsernameNotFoundException("User not found");
         List<GrantedAuthority> authorities = getAuthorities(user);
         return new User(user.getUsername(), user.getPassword(), authorities);
     }

@@ -4,7 +4,21 @@
     <title>Title</title>
 </head>
 <body>
-<h1 th:if="${secured == false}">Unsecured page</h1>
+<a th:href="@{/}">Unsecured</a><br />
+<a th:href="@{/secured}">User page</a><br />
+<a th:href="@{/admin}">Admin page</a><br />
+
+<div th:if="${secured == false}">
+    <h1>Unsecured page</h1>
+    <form action='/testing/login' method='POST'>
+        <table>
+            <tr><td>User:</td><td><input type='text' name='username' value='' /></td></tr>
+            <tr><td>Password:</td><td><input type='password' name='password' /></td></tr>
+            <tr><td colspan='2'><input name="submit" type="submit" value="Login" /></td></tr>
+            <input th:name="${_csrf.parameterName}" type="hidden" th:value="${_csrf.token}" />
+        </table>
+    </form>
+</div>
 <h1 th:if="${secured == true}">Secured page</h1>
 <h1 th:if="${admin == true}">Admin page</h1>
 </body>

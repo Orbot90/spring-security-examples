@@ -10,6 +10,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.DefaultRedirectStrategy;
+import org.springframework.security.web.RedirectStrategy;
+import org.springframework.security.web.WebAttributes;
 
 /**
  * Created by plevako on 04.05.2016.
@@ -36,6 +39,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                     .permitAll()
+                .successHandler((req, resp, authentication) -> {
+                    RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+                    if("cooluser".equals(authentication.getName())) {
+                        redirectStrategy.sendRedirect(req, resp, "/secured");
+                    } else if("admin".equals(authentication.getName())) {
+                        redirectStrategy.sendRedirect(req, resp, "/admin");
+                    }
+                    req.getSession().removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+                })
                 .and().logout();
     }
 

@@ -21,6 +21,16 @@ allprojects {
 
     compileJava.options.encoding = 'UTF-8'
 
+    war {
+        doLast {
+            mkdir("/builtwars")
+            copy {
+                from war.archivePath
+                into "../builtwars"
+            }
+        }
+    }
+
     dependencies {
         providedCompile 'javax.servlet.jsp:jsp-api:2.2',
                 'javax.servlet:javax.servlet-api:3.1.0',
@@ -30,5 +40,10 @@ allprojects {
     }
 }
 
+clean {
+    doLast {
+        file('/builtwars').deleteDir()
+    }
+}
 
 

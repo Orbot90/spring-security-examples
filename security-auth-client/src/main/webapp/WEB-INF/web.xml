@@ -13,9 +13,19 @@
         </init-param>
     </servlet>
 
+    <servlet>
+        <servlet-name>secured</servlet-name>
+        <jsp-file>/secured.jsp</jsp-file>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>securityjava</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>secured</servlet-name>
+        <url-pattern>/secured</url-pattern>
     </servlet-mapping>
 
     <listener>

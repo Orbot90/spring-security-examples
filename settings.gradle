@@ -10,4 +10,5 @@ include 'security-auth-server'
 include 'security-auth-api'
 include 'security-auth-client'
 include 'security-with-encoding'
+include 'security-examples-root'
 
