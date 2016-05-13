@@ -44,20 +44,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/join").permitAll()
-                .antMatchers("/secured/**")
-                .access("hasRole('ROLE_USER')")
+                    .antMatchers("/join").permitAll()
+                    .antMatchers("/secured/**")
+                    .access("hasRole('ROLE_USER')")
                 .and()
                 .formLogin()
-                .loginPage("/loginpage")
-                .permitAll()
+                    .loginPage("/loginpage")
+                    .permitAll()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/logoutsuccess")
+                    .logoutSuccessUrl("/logoutsuccess")
                 .and()
                 .rememberMe()
-                .rememberMeServices(rememberMeServices())
-                .key("remember-me");
+                    .rememberMeServices(rememberMeServices())
+                    .key("remember-me");
     }
 
     @Bean

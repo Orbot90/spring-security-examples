@@ -2,7 +2,7 @@ package ru.orbot90.security.console.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -20,7 +20,7 @@ import java.util.Arrays;
 public class LoginServiceImpl implements LoginService {
 
     @Autowired
-    private AuthenticationProvider authenticationProvider;
+    private AuthenticationManager authenticationManager;
 
     @PostConstruct
     public void init() {
@@ -31,7 +31,7 @@ public class LoginServiceImpl implements LoginService {
     public boolean login(String username, String password) {
         boolean success;
         try {
-            Authentication authentication = authenticationProvider
+            Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(username, password));
             SecurityContextHolder.getContext().setAuthentication(authentication);
             success = true;
